@@ -15,6 +15,12 @@ app.use((req, res, next) => {
   next();
 });
 
+app.get("/views/users", async (req, res) => {
+  const users = await UserModel.find({});
+
+  res.render("index", { users });
+});
+
 app.get("/users", async (req, res) => {
   try {
     const users = await UserModel.find({});
